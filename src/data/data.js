@@ -1,29 +1,46 @@
 const data = {
-  nodes: [
-    { id: "Client" },
-    { id: "Replica1" },
-    { id: "Replica2" },
-    { id: "Replica3" },
-    { id: "Replica4" },
-  ],
-  links: [
-    { source: "Client", target: "Replica1", phase: "Request" },
-    { source: "Client", target: "Replica2", phase: "Request" },
-    { source: "Client", target: "Replica3", phase: "Request" },
-    { source: "Client", target: "Replica4", phase: "Request" },
-
-    { source: "Replica1", target: "Replica2", phase: "Pre-Prepare" },
-    { source: "Replica1", target: "Replica3", phase: "Pre-Prepare" },
-    { source: "Replica1", target: "Replica4", phase: "Pre-Prepare" },
-
-    { source: "Replica2", target: "Replica3", phase: "Prepare" },
-    { source: "Replica2", target: "Replica4", phase: "Prepare" },
-    { source: "Replica3", target: "Replica4", phase: "Prepare" },
-
-    { source: "Replica1", target: "Client", phase: "Reply" },
-    { source: "Replica2", target: "Client", phase: "Reply" },
-    { source: "Replica3", target: "Client", phase: "Reply" },
-    { source: "Replica4", target: "Client", phase: "Reply" },
+  primaryId: "Replica1",
+  replicas: [
+    {
+      id: "Replica1",
+      states: {
+        Request: 1000,
+        "Pre-Prepare": 2000,
+        Prepare: 3000,
+        Commit: 4000,
+        Reply: 5000,
+      },
+    },
+    {
+      id: "Replica2",
+      states: {
+        Request: 1100,
+        "Pre-Prepare": 2100,
+        Prepare: 3100,
+        Commit: 4100,
+        Reply: 5100,
+      },
+    },
+    {
+      id: "Replica3",
+      states: {
+        Request: 1200,
+        "Pre-Prepare": 2200,
+        Prepare: 3200,
+        Commit: 4200,
+        Reply: 5200,
+      },
+    },
+    {
+      id: "Replica4",
+      states: {
+        Request: 1300,
+        "Pre-Prepare": 2300,
+        Prepare: 3300,
+        Commit: 4300,
+        Reply: 5300,
+      },
+    },
   ],
   phases: [
     { name: "Request" },
